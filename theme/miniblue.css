@@ -1,0 +1,298 @@
+
+/******************************************
+ * QUIZMASTER PAGE LAYOUT                 *
+ ******************************************/
+
+body    { background: #8899AA;        }
+a       { text-decoration: none;      }
+a:hover { text-decoration: underline; }
+table   { border-collapse: collapse;  }   /* cellspacing=0 */
+
+.qmPage {
+  background: #708799;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  width: 400px;
+}
+
+.qmMainContainer {
+  padding-top: 15px;
+  padding-bottom: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 1px;
+}
+
+/******************************************
+ * QUIZMASTER TEXT FONT/STYLE             *
+ ******************************************/
+h1 {
+  margin-left: -3px;
+  margin-right: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 4px;
+  color: #223344;
+  font-family: arial, helvetica, sans-serif;
+}
+
+h2 {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+p { clear: left; }
+
+.qmText {
+  text-align: justify;
+  color: #ffffff;
+  font-family: tahoma, verdana, arial, helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: normal;
+}
+
+.qm_shadedText {
+  text-align: justify;
+  color: #dddddd;
+  font-family: tahoma, verdana, arial, helvetica, sans-serif;
+  font-size: 11px;
+}
+
+.qm_bad {
+  color: #990000;
+  font-family: tahoma, verdana, arial, helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: bold;  
+  padding-bottom: 2px;
+}
+
+.qm_good {
+  color: #007700;
+  font-family: tahoma, verdana, arial, helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: bold;  
+  padding-bottom: 2px;
+}
+
+/******************************************
+ * QUIZMASTER MAIN PAGES                  *
+ ******************************************/
+
+.qm_menu_item {
+  background: #485971;
+  color: #dddddd;
+  font-family: tahoma, verdana, arial, helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  width: 72px;
+  padding-top: 4px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.qm_menu_item:hover {
+  background: #586981;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+hr {
+  color: #485971;  
+  border: solid 1px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  clear: both;
+}
+
+ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  clear: left;
+}
+ul a {
+  float: left; 
+  padding: 2px;
+  color: #485971;
+  font-family: tahoma, verdana, arial, helvetica, sans-serif;
+  font-size: 9pt;
+  font-weight: bold;
+}
+ul li { clear: both; }
+.qmListMainLink { width: 320px; }
+.qmListXtraLink { }
+.qmListLongLink { width: 100%; }
+
+.qm_odd, .qm_even { margin-left: 7px; margin-right: 7px; margin-top: 0px; margin-bottom: 0px; }
+.qm_odd a { background: #72899B; }
+.qm_even a { background: #6D8597; }
+.qm_odd a:hover, .qm_even a:hover { text-decoration: none; }
+.qm_odd:hover a, .qm_even:hover a { background: #8097A9; }
+
+.qmProfileImage {
+  width: 100%;
+  border-width: 0px;
+  margin: 0px;
+}
+.qmPreviewImageBox { float: right; }
+.qmPreviewImageBox img {
+  max-height: 300px;
+  max-width: 218px;
+  width: 300px;
+  border-width: 0px;
+  margin: 0px;
+}
+
+/******************************************
+ * QUIZMASTER BUTTON LIST                 *
+ ******************************************/
+
+.qm_wideButton_list {
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+/******************************************
+ * QUIZMASTER FORM INPUT CONTROLS         *
+ ******************************************/
+
+form {
+	padding: 0px;
+	margin: 0px;
+}
+
+label {
+ /*  background: #485971; */
+  display: block;
+  width: 120px;
+  float: left;
+  clear: left;
+
+  color: #ffffff;
+  font-family: tahoma, verdana, arial, helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  
+  padding-top: 4px;
+  padding-bottom: 6px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.qmFormFieldBox label {
+  display: inline;
+  width: auto;
+  margin: 0px;
+  float: none;
+}
+
+/* Common style for form controls. */
+.qmFormText, .qmFormPassword, .qmFormFile, .qmFormSubmit, .qmFormSelect, .qmFormTextarea {
+  color: #ffffff;
+  background: #485971;
+  float: right;
+  border-color: #aabbcc;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.qmFormText, .qmFormPassword, .qmFormTextarea {
+  border-width: 1px;
+  padding: 2px;
+  width: 213px;
+}
+.qmFormFile     {}
+.qmFormSelect   { width: 219px; }
+.qmFormTextarea { height: 100px; }
+.qmFormFieldBox {
+  float: right;
+  width: 225px;
+  padding-top: 5px;
+}
+.qmFormRadio {}
+.qmFormAltText {
+  vertical-align: 2px;
+  color: #485971;
+  font-family: tahoma, verdana, arial, helvetica, sans-serif;
+  font-size: 9pt;
+  font-weight: bold;    
+}
+.qmFormSubmit {
+  background: #7899B0;
+  font-weight: bold;
+  font-family: tahoma;
+  border-width: 1px;
+  width: 219px;
+  padding: 2px;
+}
+.qmWideButton {
+  border-width: 1px;
+  width: 259px;
+  padding: 2px;
+  margin: 0px;
+  background: #7899B0;
+  font-weight: bold;
+  font-family: tahoma;
+  font-size: 14px;
+  color: #ffffff;  
+}
+
+/******************************************
+ * OTHER                                  *
+ ******************************************/
+
+
+/* This is a CSS hack. It's needed because Mozilla etc will sometimes let floating
+   elements extend below the DIV where they are anchored. This behavior is fully
+   standards compliant but not desired here. What the hack does, is that is uses
+   the :after pseudo-class to add a single dot at the end of the main container. 
+   Then it makes sure no floats are allowed right or left of the dot (hence it will
+   be placed at the very bottom) and finally it hides the dot itself. The rest is
+   just alot of cross-platform compatbility issues that this particular suffers from.
+   Full implementation details, along with some motivations, for the hack is found here:
+   http://www.positioniseverything.net/easyclearing.html   Original hack authors were:
+   Holly 'n John (with hints/inspiration from Tony Aslett, Doug, Mark Hadley, Matt Keogh).
+   */
+.qmMainContainer:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;    
+}
+.qmMainContainer { display: inline-table; }
+/* Hides from IE-mac \*/
+* html .qmMainContainer { height: 1%; }
+.qmMainContainer { display: block; }
+/* End hide from IE-mac */
+
+
+.qmFormRow:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;    
+}
+.qmFormRow { display: inline-table; }
+/* Hides from IE-mac \*/
+* html .qmFormRow { height: 1%; }
+.qmFormRow { display: block; }
+/* End hide from IE-mac */

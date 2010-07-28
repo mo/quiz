@@ -1,0 +1,10 @@
+Files prefixed with page_ contain visual stuff like pages and forms.
+
+Files prefixed with do_ contain form processing code for non-authenticated users.
+
+Files prefixed with doa_ contain form processing code for authenticated users.
+
+Files prefixed with inc_ are small snippets with visual stuff that goes into
+                         several pages, ie the HTML for the main menu etc.
+
+

@@ -1,0 +1,4 @@
+STUFF THAT DIFFERS IN MSIE 6 AND MOZILLA 1.7.12
+
+- min-height does not work in MSIE
+- row highlighting is disabled in MSIE

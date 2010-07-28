@@ -1,0 +1,123 @@
+
+* fixa till width/height (samt max-width, max-height) på alla quiz-bilder (både i preview och i take quiz delarna)
+* fixa så både fråga och _svar_ printas i listor med frågor (eftersom vissa quiz kommer ha exakt samma fråga rakt igenom med olika bilder, typ "What's the name of this person?")
+
+* fixa en minimum (och max?) length på usernames
+* fixa så unittests använder usernames med OLIKA längd, inte bara olika chars
+* fixa MD5 på alla passwords
+
+* gör om alla FORM ACTION="yada?hello=BLAH" till FORM ACTION="yada" med INPUT TYPE="hidden" NAME="hello" VALUE="BLAH"
+* fixa så en varning visas om en fråga inte har något giltigt svar öht
+* lägg till keyboard shortcut tokens i button captions, typ %ADD ANSWER etc
+
+* det borde finnas en preMatchingTransform som gör att "porto novo" blir godkänt men inte "portonovo" då det rätta svaret är "Porto-Novo"
+* utökade unit tests för bilderna (tex testa felhantering för bilder bredare än tillåtet osv)
+* ut/omvärdera användingen av BR utifrån html/css separationen sett
+
+* snygga till 3d-border-färgerna på alla knappar
+* fixa så det små "This question belongs to the quiz 'BLAH'"-texterna blir länkar.
+* döp om qm_radioText till ngt mera lämpligt (den använd för radio buttons och checkboxes)
+
+* inför en require_param() som ger fel istället för att returna NULL som get_param() gör
+* ALLA databas calls ska gå igenom exec_query() om möjligt eftersom detta gör så backtrace informationen visas korrekt i serve_db_error()
+* kanske borde get_param() generera ett fel om efterfråga parameter inte finns?
+
+* fixa en serve_main_error() osv så att felmeddelandea aldrig wrappas i två qm_main_page DIVs
+* Lägg till filename/line refs i serve_inconsistancy() och kanske andra ställen oxo
+* username fältet i qmtbl_users borde kanske bli UNIQUE på ngt sätt
+
+* unit testerna bör shippa med QM körbara via ett shellscript med URL parameter
+* dokumentera exakt vilka chars som får finnas med i ett theme .css filename
+* gå över till GLOBALS[] istället för "global yada;" osv
+
+* profile_page.php:13 behöver standardiserad felhantering
+* fixa så det inte behövs massa PAGES_DIRECTORY refs i index.php
+* kolla så question image scriptet inte feedar bilder till unauth users, och se till att man inte kan starta det direkt (utan att gå via index.php)
+
+* ta bort alla caps comments i koden
+* ordna så qmText (vanliga paragrafer) och qm_note ('optional' text osv) är olika css klasser
+* se till att alla get_quiz_title() osv returnar NULL och inte false osv, samt kolla att alla return värden kollas
+
+* går det att submitta error_messages ifrån parameterar á la register globals exploiten?
+* bygg en 'I forgot my password' mailare
+* kolla så det går att ha space i alla inputs (så inga '$var' fjuttar är glömda)
+
+* ändra alla if ($edit_wa_question_error_message != '') till isset-statements istället
+* kolla hur det ser ut med sjukt långa strängar i alla inputs
+* kolla hur det ser ut med skumma input tecken i alla inputs
+* fixa så inte kod-raderna är så jvla långa
+* kolla så QM klarar att höja mysql packet size limit:en om QM är root
+* ta bort alla &nbsp; rader i forms:en och ordna så sånt sköts genom CSS istället
+
+* bygg en sida som visar alla slags widgets osv så man enkelt kan skapa nya stylesheets
+* fixa så frågor som inte har ngt i question kolumnen går att ta bort osv
+* inne i mail screenen så hamnar error headline:en under en qm-main headline (layout i layout)
+* gå igenom alla mysql_query() och kolla felhanteringen, ges konsekventa o användbara felmeddelanden?
+
+* greppa efter TODO i scriptet
+* kontrollera att scripet verkligen skickar rätt mime typer för olika filer
+* se till att alla queryes är indelade i snygga PREPROCESS, EXECUTE, PARSE RESULT sektioner
+
+* MySQL password kanske inte borde vara mandatory eftersom vissa kör no password och only 127.0.0.1 login
+* fixa så scriptet säger till användaren om denna försöker logga in utan att ha cookies aktiverade
+* testa om emulate_register_globals_off() funkar öht
+
+* fixa ett litet post-install status script som kollar ifall cookies och track_vars är aktiva (track_vars är php's autoparsing ?action=hej till $action='hej' funktionalitet)
+* fixa så QuizMaster kollar om den har befogenhet att skapa databaser och sen ska den fråga användaren "DATABASE BLAH DOES NOT EXISTS, WANT TO CREATE IT?" plus samma med tabellerna (inte var för sig iofs utan en fråga för alla)
+* lägg till "go to setup" link (med password) på relevanta felmeddelande (tex när db hosten är fel, timeout)
+
+* db scanner (se nedan) ska även kolla efter indexerade bilder som inte reffas ngnstans ifrån
+* använda require istället för include
+* om ingen matchande sida hittas så skall det bli fel, ej main page
+
+* greppa efter mysql_escape_string och byt till mysql_real_escape_string
+* kolla char encoding grejor på image output scripten
+* kolla upp ETag och Cache-Control HTTP headers tex för bilderna
+
+* bygg ngn slags self-check for databasen, typ som kollar att det inte finns bra duplicate usernames etc
+
+* fixa så do_serve_user_image printar en error image vid felaktigt username
+* fixa ett script i themes rooten som visar alla themes
+* fixa så installen sätter chmod 700 på script, pieces och config
+* fixa IP/domain baserad system för att banna folk
+* fixa så page_ scripten inte kan view:as direkt.
+* kolla så inte DOA scripten går att köra utifrån
+
+* lägg till stöd för COUNTRY i user profile och gör en piechart för alla users countries
+
+* ibland indentar du top-level kod, ibland inte
+
+* ta bort klassen qm_cells och fixa samma effekt med CSS Selectors istället	
+* fixa längd limitations på alla HTML textboxar
+
+* fixa så CSS filerna blir det mer överskådiga och inte har massa padding problem
+
+* kolla så att alla queries har ESCAPE protection
+* kolla så alla username är lowercase:ade innan de går in i DBn
+* avslutas guest profile sidan med /HTML verkligen?
+* skapa account name med warez fjuttar o lite sånt
+
+* antingen skall forms ha : vid label eller inte
+* fixa tomma index.html i alla kataloger?
+* fixa så setup scriptet sätter 400 på alla filer?
+* set_db_credentials.php borde kolla så hostname/username osv är giltiga
+* gör MANUAL länken i setup till en popup link
+
+* fixa så serve_error() scriptet verkligen mailar quiz admin
+
+* do_new_user.php borde nyttja en transaction
+
+* kolla så att alla data som går in i mysql är escape:ad
+* ta bort _ ur css class names
+
+* fixa validation for css o xhtml
+
+* fixa ett screenshot som visar alla olika CSS element med pilar
+
+
+* man bör inte kunna köra save_setup.php hur som helst (risk för att ngn highjackar
+siten genom att peka om till ngn annan databas)
+
+
+
+

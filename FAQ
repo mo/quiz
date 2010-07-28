@@ -1,0 +1,5 @@
+Q: WHY DOES IT NOT WORK TO LOGIN?
+A: Maybe because cookies are disabled/not supported?
+
+Q: WHY DOES IT NOT WORK TO UPLOAD IMAGES?
+A: Maybe because the image size is larger than max upload file size setting in PHP?

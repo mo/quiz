@@ -1,0 +1,8 @@
+* kolla så qm funkar med standard webläsare (inget cookie-trassel osv)
+
+* run script on webserver with php but without mysql binding properly installed
+
+* connect to database server with wrong hostname (timeout)
+* connect to database server with wrong port
+* connect to database server with wrong username
+* connect to database server with wrong password

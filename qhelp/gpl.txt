@@ -1,0 +1,1 @@
+QuizMaster is released under the BLAH license.
