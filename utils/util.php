@@ -95,6 +95,32 @@ function check_mysql_packet_size($size) {
   return 0; //All is OK, given packet size can be handled
 }
 
-
+# QuizMaster is designed to handle all SQL escaping explicitly and thus the
+# recommended PHP setup is to turn off magic_quotes_gpc in the PHP ini configuration.
+# However, for shared hosts where you can't modify your PHP config, QuizMaster will
+# still work, albeit with a performance penality incured by this function which will
+# undo all the carnage the magic quotes feature has caused.
+function undo_magic_quotes_gpc_if_enabled()
+{
+  if (get_magic_quotes_gpc())
+  {
+    $process = array(&$_GET, &$_POST, &$_COOKIE, &$_REQUEST);
+    while (list($key, $val) = each($process))
+    {
+      foreach ($val as $k => $v)
+      {
+        unset($process[$key][$k]);
+        if (is_array($v))
+        {
+          $process[$key][stripslashes($k)] = $v;
+          $process[] = &$process[$key][stripslashes($k)];
+        } else {
+          $process[$key][stripslashes($k)] = stripslashes($v);
+        }
+      }
+    }
+    unset($process);
+  }
+}
 
 ?>

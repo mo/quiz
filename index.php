@@ -12,6 +12,9 @@
 
   # MAKE SURE NO MALICIOUS VARIABLES MAKE IT INTO THE CODE
   emulate_register_globals_off();
+  
+  # Undo "PHP magic_quotes_gpc" carnage if enabled (slow but can and should be fixed by turning of magic_quotes_gpc in PHP ini)
+  undo_magic_quotes_gpc_if_enabled();
 
   $action = keepOnlyTheseChars(get_param('action'), "_/" . ALPHANUMERICALS);  
   while (substr($action, 0, 1) == '/') $action = substr($action, 1, strlen($action) - 1);

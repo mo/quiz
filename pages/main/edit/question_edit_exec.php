@@ -100,7 +100,7 @@ $comment = mysql_real_escape_string($comment);
 if (!$question_exists) {
   exec_query("INSERT INTO qmtbl_questions(quiz_id, question, comment) VALUES ($quiz_id, '$question', '$comment')"); 
   $question_id = mysql_insert_id();
-} else 
+} else
   exec_query("UPDATE qmtbl_questions SET quiz_id=$quiz_id, question='$question', comment='$comment' WHERE question_id=$question_id");  
 
 if (isset($image_id)) {
