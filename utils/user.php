@@ -33,14 +33,15 @@ function get_client_password() {
   return $_COOKIE[QM_COOKIE_NAME__USERNAME];
 }
 
+function get_user_id() {
+  if (is_guest()) { return -1; }
+  return get_user_id_for_username(get_client_username());
+}
 
 # RETURNS INTERNAL DATABASE TABLE ROW INDEX FOR CURRENT USER
-function get_user_id() {
-
-  if (is_guest()) { return -1; }
-
+function get_user_id_for_username($username) {
   # PREPROCESS INPUT
-  $username = mysql_real_escape_string(canonical_username(get_client_username()));
+  $username = mysql_real_escape_string(canonical_username($username));
 
   # EXECUTE QUERY
   $result = exec_query("SELECT user_id FROM qmtbl_users WHERE username='$username'");

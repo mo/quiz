@@ -1,14 +1,14 @@
-<?php 
+<?php
 
   $quiz_id = get_param('quiz_id');
   $quiz_title = get_quiz_field($quiz_id, 'title');
-  $quiz_availability = get_quiz_field($quiz_id, 'public_quiz');
-  
+  $public_quiz = get_quiz_field($quiz_id, 'public_quiz');
+
   # If this new a new quiz with no database record
   # we use PRIVATE as the default alternative.
-  if ($quiz_availability == null)
-    $quiz_availability = "1";
-  
+  if ($public_quiz == null)
+    $public_quiz = "0";
+
   global $edit_quiz_error_message;
 
   if ($edit_quiz_error_message != '')
@@ -24,18 +24,18 @@
     <input type="text" name="form_quiz_title" value="<?php echo $quiz_title; ?>" class="qmFormText" />
   </div>
 
-  <div class="qmFormRow">  
+  <div class="qmFormRow">
     <label for="form_quiz_availability">Quiz Availability</label>
     <div class="qmFormFieldBox">
-      <div> 
-        <input type="radio" name="form_quiz_availability" value="private"<?php echo checked($quiz_availability==1) ?> class="qmFormRadio" />
+      <div>
+        <input type="radio" name="form_quiz_availability" value="private"<?php echo checked($public_quiz==0) ?> class="qmFormRadio" />
         <span class="qmFormAltText">Private, for personal use only</span>
       </div>
       <div>
-        <input type="radio" name="form_quiz_availability" value="public"<?php echo checked($quiz_availability==0) ?> class="qmFormRadio" />
+        <input type="radio" name="form_quiz_availability" value="public"<?php echo checked($public_quiz==1) ?> class="qmFormRadio" />
         <span class="qmFormAltText">Public, available for others</span>
       </div>
-    </div>  
+    </div>
   </div>
 
 <hr/>
@@ -48,11 +48,11 @@
   <div class="qmFormRow">
     <ul>
 <?php
-  # PREPARE QUERY  
+  # PREPARE QUERY
   if ($quiz_id == NULL) $quiz_id = '-1'; // -1 is not a valid quiz index so no questions will be found.
-  $quiz_id = mysql_real_escape_string($quiz_id);  
+  $quiz_id = mysql_real_escape_string($quiz_id);
   $result = exec_query("SELECT * FROM qmtbl_questions WHERE quiz_id=$quiz_id");
-  # DISPLAY RESULTS  
+  # DISPLAY RESULTS
   if (mysql_num_rows($result) == 0) {
     echo '  <li><span class="qm_form_field"><span class="qm_shadedText">(this quiz contains no questions yet)</span></span></li>';
   } else {
@@ -79,7 +79,7 @@
   <div class="qmFormRow">
     <input type="submit" name="btnSubmit" value="SAVE AND CLOSE QUIZ" class="qmFormSubmit" />
   </div>
-  
+
 </form>
 
 <script language="JavaScript">

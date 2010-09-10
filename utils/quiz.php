@@ -69,4 +69,24 @@ function execPreMatchingTransform($transforms, $text) {
   return $text;
 }
 
+function write_li_items_for_quizes($sql_query_for_quizes, $placeholder_text_for_zero_quizes_found)
+{
+  $result = exec_query($sql_query_for_quizes);
+  if (mysql_num_rows($result) == 0)
+    echo '<li class="qm_odd"><span class="qm_shadedText">' . $placeholder_text_for_zero_quizes_found . '</span></li>';
+  else {
+    $k = 0;
+    while ($row = mysql_fetch_assoc($result)) {
+      $k++;
+      $vars = Array();
+      setVariable($vars, 'VAR_ODD_OR_EVEN', ($k%2==0)?'qm_odd':'qm_even');
+      setVariable($vars, 'VAR_QUIZ_TITLE', $row['title']);
+      setVariable($vars, 'VAR_QUIZ_ID', $row['quiz_id']);
+      filterWrite($vars, '  <li class="{VAR_ODD_OR_EVEN}">');
+      filterWrite($vars, '    <a class="qmListLongLink" href="?action=take/quiz_start&quiz_id={VAR_QUIZ_ID}">{VAR_QUIZ_TITLE}</a>');
+      filterWrite($vars, '  </li><br />');
+    }
+  }
+}
+
 ?>

@@ -18,9 +18,9 @@ $user_id = get_user_id();
 $quiz_id = mysql_real_escape_string($quiz_id);
 $form_quiz_title = mysql_real_escape_string($form_quiz_title);
 if ($form_quiz_availability == 'public') {
-  $form_quiz_availability = '1';
+  $public_quiz = '1';
 } else {
-  $form_quiz_availability = '0';
+  $public_quiz = '0';
 }
 
 
@@ -29,7 +29,7 @@ if ($quiz_id != NULL) {
   ######################################################################
   # BUT FIRST CHECK THAT THE CLIENT OWNS THE QUIZ HE WANTS TO UPDATE.
   ######################################################################
-    
+
   # PREPROCESS QUERY
   $quiz_id = mysql_real_escape_string($quiz_id);
   $result = exec_query("SELECT owner_user_id FROM qmtbl_quizes WHERE quiz_id=$quiz_id");
@@ -40,14 +40,14 @@ if ($quiz_id != NULL) {
   if (get_user_id() !== $row['owner_user_id']) {
     serve_policy_violation('You can only edit quizes that you have created.');
   }
-  
+
   ######################################################################
   # UPDATE AUTHORIZED, NOW UPDATE THE SPECIFIED QUIZ
   ######################################################################
-  
-  // Note: we already did mysql_real_escape_string($quiz_id);  
+
+  // Note: we already did mysql_real_escape_string($quiz_id);
   //       also $user_id doesnt need escaping because it comes from the DB
-  exec_query("UPDATE qmtbl_quizes SET public_quiz=$form_quiz_availability, title='$form_quiz_title' " .
+  exec_query("UPDATE qmtbl_quizes SET public_quiz=$public_quiz, title='$form_quiz_title' " .
              "WHERE quiz_id=$quiz_id AND owner_user_id=$user_id");
 
 } else {
@@ -55,10 +55,10 @@ if ($quiz_id != NULL) {
   ######################################################################
   # NO QUIZ ID WAS PROVIDED --> CREATE A NEW QUIZ OWNED BY CURRENT USER
   ######################################################################
-  
+
   # PREPROCESS QUERY
   exec_query("INSERT INTO qmtbl_quizes(owner_user_id, public_quiz, title, creation_date, times_finished) " .
-             "VALUES ($user_id, $form_quiz_availability, '$form_quiz_title', now(), 0)");
+             "VALUES ($user_id, $public_quiz, '$form_quiz_title', now(), 0)");
   # FORWARD USER TO THE "EDIT QUIZ CONTENTS" SCREEN
   $quiz_id = mysql_insert_id();
 }
@@ -73,10 +73,10 @@ if ($btnSubmit == 'ADD NEW QUESTION') {
   header('Location: ?action=edit/question_edit&quiz_id=' . $quiz_id);
 } else if ($btnSubmit == 'SAVE AND CLOSE QUIZ') {
   header("Location: ?action=edit/quizes_edit");
-} else {  
+} else {
    // TODO: handle edit,up,down,delete buttons for all questions.
-   
+
 }
-  
+
 
 ?>

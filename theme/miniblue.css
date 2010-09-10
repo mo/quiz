@@ -52,6 +52,17 @@ h2 {
   margin-bottom: 10px;
 }
 
+h3 {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  color: #dddddd;
+  margin-left: 8px;
+  margin-right: 0px;
+  margin-top: 15px;
+  margin-bottom: 0px;
+}
+
 p { clear: left; }
 
 .qmText {
@@ -73,7 +84,7 @@ p { clear: left; }
   color: #990000;
   font-family: tahoma, verdana, arial, helvetica, sans-serif;
   font-size: 10px;
-  font-weight: bold;  
+  font-weight: bold;
   padding-bottom: 2px;
 }
 
@@ -81,7 +92,7 @@ p { clear: left; }
   color: #007700;
   font-family: tahoma, verdana, arial, helvetica, sans-serif;
   font-size: 10px;
-  font-weight: bold;  
+  font-weight: bold;
   padding-bottom: 2px;
 }
 
@@ -111,7 +122,7 @@ p { clear: left; }
 }
 
 hr {
-  color: #485971;  
+  color: #485971;
   border: solid 1px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -126,7 +137,7 @@ ul {
   clear: left;
 }
 ul a {
-  float: left; 
+  float: left;
   padding: 2px;
   color: #485971;
   font-family: tahoma, verdana, arial, helvetica, sans-serif;
@@ -188,7 +199,7 @@ label {
   font-family: tahoma, verdana, arial, helvetica, sans-serif;
   font-size: 11px;
   font-weight: bold;
-  
+
   padding-top: 4px;
   padding-bottom: 6px;
   margin-top: 5px;
@@ -232,7 +243,7 @@ label {
   color: #485971;
   font-family: tahoma, verdana, arial, helvetica, sans-serif;
   font-size: 9pt;
-  font-weight: bold;    
+  font-weight: bold;
 }
 .qmFormSubmit {
   background: #7899B0;
@@ -251,7 +262,7 @@ label {
   font-weight: bold;
   font-family: tahoma;
   font-size: 14px;
-  color: #ffffff;  
+  color: #ffffff;
 }
 
 /******************************************
@@ -262,7 +273,7 @@ label {
 /* This is a CSS hack. It's needed because Mozilla etc will sometimes let floating
    elements extend below the DIV where they are anchored. This behavior is fully
    standards compliant but not desired here. What the hack does, is that is uses
-   the :after pseudo-class to add a single dot at the end of the main container. 
+   the :after pseudo-class to add a single dot at the end of the main container.
    Then it makes sure no floats are allowed right or left of the dot (hence it will
    be placed at the very bottom) and finally it hides the dot itself. The rest is
    just alot of cross-platform compatbility issues that this particular suffers from.
@@ -271,11 +282,11 @@ label {
    Holly 'n John (with hints/inspiration from Tony Aslett, Doug, Mark Hadley, Matt Keogh).
    */
 .qmMainContainer:after {
-    content: "."; 
-    display: block; 
-    height: 0; 
-    clear: both; 
-    visibility: hidden;    
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
 }
 .qmMainContainer { display: inline-table; }
 /* Hides from IE-mac \*/
@@ -285,11 +296,11 @@ label {
 
 
 .qmFormRow:after {
-    content: "."; 
-    display: block; 
-    height: 0; 
-    clear: both; 
-    visibility: hidden;    
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
 }
 .qmFormRow { display: inline-table; }
 /* Hides from IE-mac \*/

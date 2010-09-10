@@ -4,37 +4,34 @@
   if ($user_id == null)
     $user_id = get_user_id();
 
-?>
 
-<h2>Select quiz to take</h2>
+  echo '<h2>Select quiz to take</h2>';
 
-<ul>  
-<?php  
-  $user_id = mysql_real_escape_string($user_id);
-  if ($user_id == get_user_id()) { # users can see their own quizes (even private ones)
-    $query = "SELECT * FROM qmtbl_quizes WHERE owner_user_id=$user_id";
-  } else # A user can only see other another user's public quizes
-    $query = "SELECT * FROM qmtbl_quizes WHERE owner_user_id=$user_id AND public_quiz=TRUE";
-  $result = exec_query($query);
-  if (mysql_num_rows($result) == 0)
-    echo '<li><span class="qm_shadedText">(you have not created any quizes yet, click the "Edit Quizes" link)</span></li>';
-  else {
-    $k = 0;
-    while ($row = mysql_fetch_assoc($result)) {
-      $k++;
-      $vars = Array();
-      setVariable($vars, 'VAR_ODD_OR_EVEN', ($k%2==0)?'qm_odd':'qm_even');
-      setVariable($vars, 'VAR_QUIZ_TITLE', $row['title']);
-      setVariable($vars, 'VAR_QUIZ_ID', $row['quiz_id']);
-      filterWrite($vars, '  <li class="{VAR_ODD_OR_EVEN}">');
-      filterWrite($vars, '    <a class="qmListLongLink" href="?action=take/quiz_start&quiz_id={VAR_QUIZ_ID}">{VAR_QUIZ_TITLE}</a>');
-      filterWrite($vars, '  </li><br />');      
-    }
+  if ($user_id == get_user_id())
+  {
+    # When a user list their own quizes we show both their public and private quizes plus all other user's public quizes.
+    echo "<h3>Your quizes</h3>\n";
+    echo "<ul>\n";
+    $user_id = mysql_real_escape_string($user_id);
+    write_li_items_for_quizes("SELECT * FROM qmtbl_quizes WHERE owner_user_id='$user_id'", '(you have not created any quizes yet, click the "Edit Quizes" link)');
+    echo "</ul>\n";
+    echo "<h3>Public quizes shared by other users</h3>\n";
+    echo "<ul>\n";
+    write_li_items_for_quizes("SELECT * FROM qmtbl_quizes WHERE owner_user_id<>'$user_id' AND public_quiz=1", '(no one else are sharing any quizes right now)');
+    echo '</ul>';
+  } else {
+    # When listing other user's quizes, list only public ones.
+    echo '<h3>Quizes shared by user "' . $user_id . '"</h3>' . "\n";
+    echo "<ul>\n";
+    # If someone passes in a username instead of a numerical user ID, just do the right thing:
+    if (!is_numeric($user_id))
+      $user_id = get_user_id_for_username($user_id);
+    $user_id = mysql_real_escape_string($user_id);
+    write_li_items_for_quizes("SELECT * FROM qmtbl_quizes WHERE owner_user_id='$user_id' AND public_quiz=1", '(this user is not sharing any quizes right now)' . "SELECT * FROM qmtbl_quizes WHERE owner_user_id='$user_id' AND public_quiz=1");
+    echo "</ul>\n";
   }
 
+
 ?>
-</ul>
-  
+
 </div>
-
-
