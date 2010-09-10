@@ -10,7 +10,7 @@
   $result = exec_query("SELECT COUNT(*) AS question_count FROM qmtbl_questions WHERE quiz_id=$quiz_id");
   $row = mysql_fetch_assoc($result);
   if (!$row) //question count for non-existing quiz
-    serve_error("Invalid question reference", "The QuizMaster script was asked to start a quiz with question $question_numer in the quiz with id $quiz_id but there was no such question. This could be due to a bug in QuizMaster, an old bookmark/link or an intentionally constructed invalid URL.");
+    serve_error("Invalid question reference", "The QuizMaster script was asked to start a quiz with question $question_number in the quiz with id $quiz_id but there was no such question. This could be due to a bug in QuizMaster, an old bookmark/link or an intentionally constructed invalid URL.");
   $question_count = $row['question_count'];
   if ($question_number < 1 || $question_number > $question_count) {
   	echo "finshed!";
@@ -18,7 +18,7 @@
   }
 
   # FETCH QUESTION DETAILS
-  $$quiz_order = mysql_real_escape_string($quiz_order);
+  $quiz_order = mysql_real_escape_string($quiz_order);
   $result = exec_query("SELECT * FROM qmtbl_questions WHERE quiz_id=$quiz_id ORDER BY RAND($quiz_order) LIMIT 1 OFFSET $question_offset");
   $row = mysql_fetch_assoc($result);
   $question = $row['question'];
