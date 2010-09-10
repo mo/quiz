@@ -16,7 +16,7 @@
 # setup!
 #
 
-# The QuizMaster script version. 
+# The QuizMaster script version.
 define("QUIZMASTER_VERSION", "v0.01");
 
 # This file will be overwritten by QuizMaster when the web setup guide runs.

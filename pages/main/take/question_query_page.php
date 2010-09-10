@@ -23,6 +23,7 @@
   $row = mysql_fetch_assoc($result);
   $question = $row['question'];
   $question_id = $row['question_id'];
+  $question_type = $row['question_type'];
 
 ?>
 
@@ -42,23 +43,43 @@
     </div>
   </div>
   <?php } ?>
-  
+
   <label>Question</label>
   <div class="qmFormFieldBox">
     <span class="qmText"><?php echo $question ?></span>
   </div>
-  
-  <label for="form_answer">Your Answer</label>
-  <input name="form_answer" class="qmFormText" type="text" value="" autocomplete="off" />
 
+  <?php if ($question_type === 'qt_written_answer') { ?>
+    <label for="form_answer">Your Answer</label>
+    <input name="form_answer" class="qmFormText" type="text" value="" autocomplete="off" />
+  <?php } else if ($question_type === 'qt_multiple_choice') {
+    echo '<div class="qmFormRow">';
+    echo '<label>Select Your Answer</label>';
+    # Order alternatives randomly but use a seed to make sure the random order is the same when re-trying
+    # each question repeatedly (a new random ordering will be used the next time the quiz is restarted).
+    $result = exec_query("SELECT * FROM qmtbl_mc_answers WHERE question_id=$question_id ORDER BY RAND(" . $quiz_order . ")");
+    while ($row = mysql_fetch_assoc($result))
+    {
+      echo '<div class="qmFormFieldBox">';
+      echo '  <input type="radio" name="form_answer" value="' . $row['answer'] . '" />';
+      echo '  <label class="qmFormAltText">' . $row['answer'] . '</label>';
+      echo '</div>';
+    }
+    echo '</div>';
+  } else {
+    serve_error("Invalid Question Type", "The database contains an invalid question type.");
+  } ?>
+
+  <div class="qmFormRow">
   <hr />
-  
+  </div>
+
   <div class="qm_wideButton_list">
     <input class="qmWideButton" type="submit" name="btnSubmit"  value="OK">
   </div>
-  
-</form>  
-  
+
+</form>
+
 <script language="JavaScript">
 <!--
 document.mainform.form_answer.focus();

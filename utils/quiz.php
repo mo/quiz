@@ -43,8 +43,8 @@ function get_mc_answer_field($answer_id, $field) {
 }
 
 function possible_answer_count($question_id) {
-  $answer_count = 0;  
-  
+  $answer_count = 0;
+
   # Check the qmtbl_wa_answers table
   $question_id = mysql_real_escape_string($question_id);
   $result = exec_query("SELECT * FROM qmtbl_wa_answers WHERE question_id=$question_id");
@@ -54,7 +54,7 @@ function possible_answer_count($question_id) {
 }
 
 function get_question_count($quiz_id) {
-  $question_count = 0;  
+  $question_count = 0;
   $quiz_id = mysql_real_escape_string($quiz_id);
   $result = exec_query("SELECT * FROM qmtbl_questions WHERE quiz_id=$quiz_id");
   $question_count += mysql_num_rows($result);
