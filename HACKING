@@ -1,0 +1,7 @@
+To setup a private staging server for testing patches etc, do this:
+
+* Create a subdomain on one of your servers/domains, like for example: quiz-testing.yourdomain.com
+* Put all files from your quiz git branch into the webroot of this new subdomain
+* Create a mysql user + empty database and put the new credentials in prefs/settings.php in the webroot
+* [optional] Review the chmod of prefs/settings.php
+* Navigate to the subdomain. QuizMaster should detect the empty database and create the necessary tables etc.
