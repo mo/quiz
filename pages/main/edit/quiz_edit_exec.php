@@ -38,7 +38,7 @@ if ($quiz_id != NULL) {
   }
   $row = mysql_fetch_assoc($result);
   if (get_user_id() !== $row['owner_user_id']) {
-    serve_policy_violation('You can only edit quizes that you have created.');
+    serve_policy_violation('You can only edit quizzes that you have created.');
   }
 
   ######################################################################
@@ -46,7 +46,7 @@ if ($quiz_id != NULL) {
   ######################################################################
 
   // Note: we already did mysql_real_escape_string($quiz_id);
-  //       also $user_id doesnt need escaping because it comes from the DB
+  //       also $user_id doesn't need escaping because it comes from the DB
   exec_query("UPDATE qmtbl_quizes SET public_quiz=$public_quiz, title='$form_quiz_title' " .
              "WHERE quiz_id=$quiz_id AND owner_user_id=$user_id");
 

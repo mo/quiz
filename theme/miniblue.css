@@ -276,7 +276,7 @@ label {
    the :after pseudo-class to add a single dot at the end of the main container.
    Then it makes sure no floats are allowed right or left of the dot (hence it will
    be placed at the very bottom) and finally it hides the dot itself. The rest is
-   just alot of cross-platform compatbility issues that this particular suffers from.
+   just a lot of cross-platform compatibility issues that this particular suffers from.
    Full implementation details, along with some motivations, for the hack is found here:
    http://www.positioniseverything.net/easyclearing.html   Original hack authors were:
    Holly 'n John (with hints/inspiration from Tony Aslett, Doug, Mark Hadley, Matt Keogh).

@@ -51,7 +51,7 @@ function connectToDatabase() {
       case 2003:  # 2003 == CR_CONN_HOST_ERROR   caused by connecting to "10.1.2.3" (ie a local IP range that is not on the same network as this host) or "www.svd.se" (domain exists but no reply from that IP)
         serve_error('Could not connect to database server (MySQL ErrNo==' . mysql_errno() . ')',
                     'QuizMaster failed to connect to the database. This error could be caused by several things, for instance; ' .
-                    'the database server has crashed, the database server is down for scheduled maintainance or the network link ' .
+                    'the database server has crashed, the database server is down for scheduled maintenance or the network link ' .
                     'between the web server and the database server has been disrupted. Finally it could also be that the QuizMaster ' .
                     'database configuration is not properly tuned. Typically only the quiz site administrator can fix this problem.');
         break;

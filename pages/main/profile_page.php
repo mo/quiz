@@ -1,7 +1,7 @@
 <?php
   if (is_guest()) {
     echo('<p class="qmText">The guest account does not have a profile. If you register a personal account ');
-    echo('you will be able to create you own quizes and see your user information plus statistics here!</p>');
+    echo('you will be able to create you own quizzes and see your user information plus statistics here!</p>');
     echo('<br><br><br><br><br><br><br><br>');
     die;
   }

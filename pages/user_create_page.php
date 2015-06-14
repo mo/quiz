@@ -8,8 +8,8 @@
 
 <h1 class="qm_headline">QuizMaster - Create User</h1>
 
-<p class="qmText">QuizMaster registration is free of charge. You may use the quizes for anything you
-like, general trivia or homework training. The quizes you create can be made public or stay private.
+<p class="qmText">QuizMaster registration is free of charge. You may use the quizzes for anything you
+like, general trivia or homework training. The quizzes you create can be made public or stay private.
 However, keep in mind that the quiz site administrator will ultimately decide what type of material
 is suitable for the site, spam etc will be deleted with no prior notice.</p>
 
@@ -42,7 +42,7 @@ is suitable for the site, spam etc will be deleted with no prior notice.</p>
   an e-mail it will not be shared with any third party and it will certainly not be published
   anywhere on the site. The advantage of providing an e-mail is the ability to reset
   your password if you forget it. Also you can choose to receive certain e-mail
-  alerts, for instance when new quizes are created etc.</p>
+  alerts, for instance when new quizzes are created etc.</p>
 
   <div class="qmFormRow">
     <label for="form_email">E-mail <span class="qmText">(optional)</span></label>

@@ -109,7 +109,7 @@ if (mysql_num_rows($result) == 0) {
     <label for="form_label">Set Image <span class="qmText">(optional)</span></label>
         <!-- A maximal size of 15MB images are allowed, this soft limit
              can be circumvented but it does not matter since PHP specifies
-             another limit in php.ini which is hard plus usually alot smaller. -->
+             another limit in php.ini which is hard plus usually a lot smaller. -->
     <input type="hidden" name="MAX_FILE_SIZE" value="15000000">
     <input type="file" name="form_question_image" class="qmFormFile" value="BROWSE">
   </div>

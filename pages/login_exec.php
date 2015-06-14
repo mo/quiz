@@ -26,7 +26,7 @@ if ($btnSubmit == 'LOGIN AS GUEST') {
   # Note: We do NOT check the given login credentials for validity here.
   #       Instead all scripts will check their validity before serving a
   #       request, and when invalid login credentials are found the client
-  #       is automatically refered back to the login page.
+  #       is automatically referred back to the login page.
   #
   # Save login credentials in cookies. Password cookie expires after 1 week.
   # NULL expire means no expiration, and the final arg is in which dir the
