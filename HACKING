@@ -1,7 +1,62 @@
+###################################################################
+### HOW TO SETUP A QUIZMASTER STAGING SERVER
+###################################################################
+
 To setup a private staging server for testing patches etc, do this:
 
-* Create a subdomain on one of your servers/domains, like for example: quiz-testing.yourdomain.com
+* Create a subdomain on one of your servers/domains, for example: quiz-testing.yourdomain.com
 * Put all files from your quiz git branch into the webroot of this new subdomain
-* Create a mysql user + empty database and put the new credentials in prefs/settings.php in the webroot
+* Create a mysql user + empty database
 * [optional] Review the chmod of prefs/settings.php
-* Navigate to the subdomain. QuizMaster should detect the empty database and create the necessary tables etc.
+* Navigate to the subdomain
+
+On first load, QuizMaster will show a config form where you specify the
+databaser name/user/password, it then proceeds to create the necessary tables.
+
+###################################################################
+### SETUP STAGING SERVER ON UBUNTU
+###################################################################
+
+sudo apt-get install mysql-server php5-mysql
+# mysql-server package it will prompt you to set a mysql root password
+
+mysql -u root -p
+# when asked, enter the root password you selected above
+
+CREATE DATABASE quizdb;
+CREATE USER 'quizuser'@'localhost' IDENTIFIED BY 'some_pass';
+GRANT ALL PRIVILEGES ON quizdb.* TO 'quizuser'@'localhost';
+# hit CTRL-D to exit mysql shell
+
+sudo mkdir -p /var/www/quiz
+sudo cp -r ~/git-clone-of-quizmaster/* /var/www/quiz
+# NOTE: for ubuntu the apache2 user is "www-data", might be something else on your distro
+sudo chown -R $USER:www-data /var/www/quiz
+sudo chown g+w /var/www/quiz/prefs/settings.php
+
+sudo sh -c 'echo "<VirtualHost quiz:80>\n\tDocumentRoot "/var/www/quiz"\n</VirtualHost>" > /etc/apache2/sites-available/quiz.conf'
+sudo a2ensite quiz
+
+# add "127.0.0.1 quiz" to /etc/hosts
+# sudo service apache2 restart
+# navigate to http://quiz/
+
+# NOTE: you can skip the /etc/hosts and use a real domain instead, and just use that in the VirtualHost element
+
+
+
+
+
+###################################################################
+### NOTES ABOUT THE CODE
+###################################################################
+
+QuizMaster has been designed to run on a PHP configuration where register globals is off.
+
+script/page_ contain the content of the main pages.
+script/do_ contain scripts that execute action as a result of form submits.
+script/inc_* contain content which is included in several pages.
+
+All other scripts are collections of utility function related to a specific area,
+for instance database.php contains general MySQL functions and user.php contain
+stuff relating to quiz site users etc.

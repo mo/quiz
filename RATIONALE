@@ -1,5 +1,3 @@
-_do actions and _do scripts
-
 QuizMaster has been designed to run on a PHP configuration where register
 globals is off; because such configurations are inherently more secure.
 
@@ -7,19 +5,6 @@ script/page_ contain the content of the main pages.
 script/do_ contain scripts that execute action as a result of form submits.
 script/inc_* contain content which is included in several pages.
 
-all other scripts are collections of utility function related to a specific area,
+All other scripts are collections of utility function related to a specific area,
 for instance database.php contains general MySQL functions and user.php contain
 stuff relating to quiz site users etc.
-
-Q: why use ugly URLs?
-A: because mod_rewrite is not always installed and we want to minimize the list of dependencies
-
-
----
-
-
-All pages must have a proper DOCTYPE defined, otherwise MSIE users will experience a faulty
-CSS box model (this is due to a bug in MSIE). So always include this (or similar for loose):
-
-  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
