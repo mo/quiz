@@ -77,7 +77,6 @@ chmod('prefs', 0700);
 chmod('utils', 0700);
 chmod('pages', 0700);
 chmod('theme', 0755);  # 755 makes it possible to surf to the dir
-chmod('qhelp', 0755);  # 755 ...
 
 
 
