@@ -27,10 +27,10 @@ $btnSubmit = get_param('btnSubmit');
 # both $_POST and $_FILES as completely empty variables.
 #
 # This annoyingly obscure behaviour is even documented, albeit in a subtle place.
-# See the last parapraph in the documentation of "post_max_size", available here: 
-# http://se2.php.net/ini.core#ini.post-max-size 
+# See the last parapraph in the documentation of "post_max_size", available here:
+# http://se2.php.net/ini.core#ini.post-max-size
 #
-# It says: 
+# It says:
 #
 #    If the size of post data is greater than post_max_size, the $_POST and
 #    $_FILES superglobals are empty. This can be tracked in various ways, e.g.
@@ -41,39 +41,39 @@ $btnSubmit = get_param('btnSubmit');
 # a really large file (making the HTTP request in total larger than post_max_size)
 # has been uploaded as user image in the "create user" form.
 if (empty($_POST)) {
-	global $user_create_error_message;
-	$user_create_error_message = "The image you specified is too large (it made the entire HTTP request size exceed the post_max_size limit which is currently set to " . ini_get("post_max_size") . ").";
-	serve_page('user_create_page.php');
+  global $user_create_error_message;
+  $user_create_error_message = "The image you specified is too large (it made the entire HTTP request size exceed the post_max_size limit which is currently set to " . ini_get("post_max_size") . ").";
+  serve_page('user_create_page.php');
 }
 
 # IF AN IMAGE WAS SUPPLIED, IS IT VALID?
 if ($_FILES['form_user_image']['error'] != UPLOAD_ERR_NO_FILE and # file upload box was left empty
     $_FILES['form_user_image']['error'] != UPLOAD_ERR_OK) {       # file upload box specifies a valid file
-	global $user_create_error_message;
-	switch ($_FILES['form_user_image']['error']) {
-    	case UPLOAD_ERR_INI_SIZE:
-    		$user_create_error_message = "The image you specified is too large (size exceeded upload_max_filesize which is currently set to " . ini_get("upload_max_filesize") . ").";
-    		break;
-    	case UPLOAD_ERR_PARTIAL:
-    		$user_create_error_message = "The image you specified was, for some reason, only partially uploaded (PHP error code UPLOAD_ERR_PARTIAL). Try to upload it again, and if that does not work, try another image instead.";
-    		break;	
-    	case 6: # 6 == UPLOAD_ERR_NO_TMP_DIR
-    		$user_create_error_message = "The image could not be uploaded, because the server that runs this PHP script either (1) didn't configure a temporary folder, or (2) the configured temporary folder did not exist.";
-    		break;	
-    	case 7: # 7 == UPLOAD_ERR_CANT_WRITE
-    		$user_create_error_message = "The image could not be uploaded, because the server could not write the uploaded file to disk. This issue is due to server problem and can only be resolved by the server administrator. Typically this problem is caused by (1) the server ran out of disk space, or (2) access rights for the directory where uploaded files are saved is not properly setup.";
-    		break;
-    	default:
-    		$user_create_error_message = "The image you specified could not be uploaded, because an unknown error occurred. The file upload error code was " . $_FILES['form_user_image']['error'] . ".";
-    		break;	
+  global $user_create_error_message;
+  switch ($_FILES['form_user_image']['error']) {
+      case UPLOAD_ERR_INI_SIZE:
+        $user_create_error_message = "The image you specified is too large (size exceeded upload_max_filesize which is currently set to " . ini_get("upload_max_filesize") . ").";
+        break;
+      case UPLOAD_ERR_PARTIAL:
+        $user_create_error_message = "The image you specified was, for some reason, only partially uploaded (PHP error code UPLOAD_ERR_PARTIAL). Try to upload it again, and if that does not work, try another image instead.";
+        break;
+      case 6: # 6 == UPLOAD_ERR_NO_TMP_DIR
+        $user_create_error_message = "The image could not be uploaded, because the server that runs this PHP script either (1) didn't configure a temporary folder, or (2) the configured temporary folder did not exist.";
+        break;
+      case 7: # 7 == UPLOAD_ERR_CANT_WRITE
+        $user_create_error_message = "The image could not be uploaded, because the server could not write the uploaded file to disk. This issue is due to server problem and can only be resolved by the server administrator. Typically this problem is caused by (1) the server ran out of disk space, or (2) access rights for the directory where uploaded files are saved is not properly setup.";
+        break;
+      default:
+        $user_create_error_message = "The image you specified could not be uploaded, because an unknown error occurred. The file upload error code was " . $_FILES['form_user_image']['error'] . ".";
+        break;
     }
     serve_page('user_create_page.php');
 }
 
 # DID THE USER PRESS THE CANCEL BUTTON? --> RETURN TO LOGIN FORM
 if ($btnSubmit == 'CANCEL') {
-	header("Location: ?");
-	die;
+  header("Location: ?");
+  die;
 }
 
 # DID THE USER OMIT A MANDATORY FIELD? --> RETRY
@@ -120,23 +120,23 @@ if ($image_specs_array !== NULL) {
                   'tried to change the maximum allowed packet size, however unfortunately this packet size limit ' .
                   'could not be modified. You may still be able to create an account if you choose a smaller image ' .
                   'or, if all else fails, omit the image. The maximum packet size varies heavily between servers, ' .
-                  'but judging from the server parameters this particular server can probably handle packets up to ' . 
+                  'but judging from the server parameters this particular server can probably handle packets up to ' .
                   'approximately <span class="qm_good">' . floor($return_value/1024) .
                   ' kilobytes</span> maximum. Press BACK to try again with a smaller image file.');
   }
 }
 
-$query = "INSERT INTO qmtbl_users(" . 
-         "username, password, registration_date, last_seen, image_data, image_mime, email, realname) VALUES (" . 
+$query = "INSERT INTO qmtbl_users(" .
+         "username, password, registration_date, last_seen, image_data, image_mime, email, realname) VALUES (" .
          "'" . mysql_real_escape_string(strtolower($form_username)) . "', " .
-         "'" . mysql_real_escape_string($form_password) . "', " . 
-         "now(), " . 
-         "now(), " . 
-         "'" . mysql_real_escape_string($image_specs_array['image_data']) . "', " . 
-         "'" . mysql_real_escape_string($image_specs_array['image_mime']) . "', " . 
-         "'" . mysql_real_escape_string($form_email) . "', " . 
+         "'" . mysql_real_escape_string($form_password) . "', " .
+         "now(), " .
+         "now(), " .
+         "'" . mysql_real_escape_string($image_specs_array['image_data']) . "', " .
+         "'" . mysql_real_escape_string($image_specs_array['image_mime']) . "', " .
+         "'" . mysql_real_escape_string($form_email) . "', " .
          "'" . mysql_real_escape_string($form_realname) . "')";
-                                                
+
 $result = mysql_query($query);
 if (!$result) {
   switch (mysql_errno()) {
@@ -146,7 +146,7 @@ if (!$result) {
                 'tried to change the maximum allowed packet size, however unfortunately this packet size limit ' .
                 'could not be modified. You may still be able to create an account if you choose a smaller image ' .
                 'or, if all else fails, omit the image. The maximum packet size varies heavily between servers, ' .
-                'but judging from the server parameters this particular server can probably handle packets up to ' . 
+                'but judging from the server parameters this particular server can probably handle packets up to ' .
                 'approximately <span class="qm_good">' . floor($max_allowed_packet_limitation/1000) .
                 ' kilobytes</span> maximum. Press BACK to try again.');
   default:

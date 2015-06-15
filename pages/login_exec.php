@@ -18,7 +18,7 @@ if (($btnSubmit !== 'LOGIN AS GUEST') and ($form_username == '' or $form_passwor
 # the $btnSubmit variables is set to CREATE NEW USER (see second case below).
 #
 if ($btnSubmit == 'LOGIN AS GUEST') {
-  
+
   setcookie(QM_COOKIE_NAME__GUEST, '1');
 
 } else if ($btnSubmit == 'LOGIN' || $btnSubmit == 'CREATE NEW USER') {

@@ -1,6 +1,6 @@
 <?php
 
-# 
+#
 # This script is called by the setup form which is displayed by page_setup.php
 # It will create/write another PHP script, namely config/settings.php, which holds
 # all QuizMaster configuration such as database hostname/name/username/password
@@ -25,7 +25,7 @@ $btnSubmit           = get_param('btnSubmit');
 if ($btnSubmit == 'PREVIEW THEME') {
   $GLOBALS['theme_override'] = $form_theme;
   include(INCLUDES_DIRECTORY . 'inc_header.php');
-  include(PAGES_DIRECTORY . 'setup_page.php'); 
+  include(PAGES_DIRECTORY . 'setup_page.php');
   include(INCLUDES_DIRECTORY . 'inc_footer.php');
   die();
 }
@@ -37,7 +37,7 @@ if ($form_mysql_hostname == '' || $form_mysql_database == '' ||
     $form_mysql_username == '' || $form_mysql_password == '') {
   $GLOBALS['error_message'] = "All the MySQL fields are mandatory.";
   include(INCLUDES_DIRECTORY . 'inc_header.php');
-  include(PAGES_DIRECTORY . 'setup_page.php'); 
+  include(PAGES_DIRECTORY . 'setup_page.php');
   include(INCLUDES_DIRECTORY . 'inc_footer.php');
   die();
 }
