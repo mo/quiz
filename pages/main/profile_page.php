@@ -28,7 +28,7 @@
 
   <label>Real name</label>
   <div class="qmFormFieldBox">
-    <span class="qm_shadedText"><?php echo stripslashes($profile['realname']) ?></span
+    <span class="qm_shadedText"><?php echo stripslashes($profile['realname']) ?></span>
   </div>
 
   <label>E-mail</label>
