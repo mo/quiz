@@ -10,8 +10,8 @@ $btnSubmit = get_param('btnSubmit');
 # This IF-statement (see below) is the result of a rather peculiar thing that PHP
 # does. Imagine a method="POST" form that contains a textbox and a file upload
 # widget. Now suppose that a user selects to upload a ridiculously large
-# file, a file that is so big that it's size exceeds not only upload_max_filesize
-# both also post_max_size. Now, the weird thing is the way PHP reacts to this,
+# file, a file that is so big that its size exceeds not only upload_max_filesize
+# but also post_max_size. Now, the weird thing is the way PHP reacts to this,
 # it simply chooses to wipe all data in $_POST and $_FILES ... meaning that
 # whatever data was sent in the textbox field will be lost as well. This is
 # not only counter-intuitive but it also limits the ability to write proper
