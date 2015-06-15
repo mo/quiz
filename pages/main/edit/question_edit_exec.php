@@ -98,20 +98,20 @@ $quiz_id = mysql_real_escape_string($quiz_id);
 $question = mysql_real_escape_string($question);
 $comment = mysql_real_escape_string($comment);
 if (!$question_exists) {
-  exec_query("INSERT INTO qmtbl_questions(quiz_id, question, comment) VALUES ($quiz_id, '$question', '$comment')"); 
+  exec_query("INSERT INTO qmtbl_questions(quiz_id, question, comment) VALUES ($quiz_id, '$question', '$comment')");
   $question_id = mysql_insert_id();
 } else
-  exec_query("UPDATE qmtbl_questions SET quiz_id=$quiz_id, question='$question', comment='$comment' WHERE question_id=$question_id");  
+  exec_query("UPDATE qmtbl_questions SET quiz_id=$quiz_id, question='$question', comment='$comment' WHERE question_id=$question_id");
 
 if (isset($image_id)) {
   # Also update the image_id reference
   $image_id = mysql_real_escape_string($image_id);
-  exec_query("UPDATE qmtbl_questions SET image_id=$image_id WHERE question_id=$question_id");  
+  exec_query("UPDATE qmtbl_questions SET image_id=$image_id WHERE question_id=$question_id");
 }
 
 # NOW LETS LOOK AT THE QUESTION TYPE. WE ONLY ALLOW THE USER TO CHANGE THIS TYPE IF
-# THERE ARE NO ANSWERS CREATED, OTHERWISE THESE MUST BE DELETED FIRST. WE DO THIS CHECK 
-# DOWN HERE ON PURPOSE BECAUSE IF THE USER CHANGES TITLE, COMMENT ETC WE DONT WANT 
+# THERE ARE NO ANSWERS CREATED, OTHERWISE THESE MUST BE DELETED FIRST. WE DO THIS CHECK
+# DOWN HERE ON PURPOSE BECAUSE IF THE USER CHANGES TITLE, COMMENT ETC WE DONT WANT
 # HIM TO LOOSE THAT DATA (HENCE ITS STORED ABOVE). NOTE THAT QUIZMASTER DOESN'T SUPPORT
 # QUESTIONS WHICH ACCEPTS BOTH WRITTEN ANSWERS AND SELECTED (MULTIPLE CHOICE) ONES.
 $old_question_type = get_question_field($question_id, 'question_type');
@@ -131,9 +131,9 @@ exec_query("UPDATE qmtbl_questions SET question_type='$question_type' WHERE ques
 # EDIT BUTTON BESIDE A QUESTION --> OPEN EDIT FORM FOR THAT ANSWER
 # ADD ANSWER BUTTON             --> OPEN EDIT FORM FOR A NEW ANSWER
 # STORE QUESTION                --> RETURN TO 'EDIT QUIZ'
-# 
+#
 
-if ($btnSubmit == 'ADD ANSWER') {  
+if ($btnSubmit == 'ADD ANSWER') {
   if ($question_type == 'qt_written_answer')
     header("Location: ?action=edit/answer_wa_edit&question_id=$question_id");
   else

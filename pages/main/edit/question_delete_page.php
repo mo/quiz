@@ -1,4 +1,4 @@
-<?php 
+<?php
 
   $question_id = get_param('question_id');
   $question = get_question_field($question_id, 'question');
@@ -26,11 +26,11 @@
   <div class="qmFormRow">
     <input type="submit" class="qmFormSubmit" name="btnSubmit" value="OK" />
   </div>
-  
+
   <div class="qmFormRow">
     <input type="submit" class="qmFormSubmit" name="btnSubmit" value="CANCEL" />
   </div>
-  
+
 </div>
 
 </form>

@@ -13,8 +13,8 @@
     serve_error("Invalid question reference", "The QuizMaster script was asked to start a quiz with question $question_number in the quiz with id $quiz_id but there was no such question. This could be due to a bug in QuizMaster, an old bookmark/link or an intentionally constructed invalid URL.");
   $question_count = $row['question_count'];
   if ($question_number < 1 || $question_number > $question_count) {
-  	echo "finshed!";
-  	die("");
+    echo "finshed!";
+    die("");
   }
 
   # FETCH QUESTION DETAILS

@@ -6,11 +6,11 @@
   #                  to which question the new answer should be attached)
   $answer_id = get_param('answer_id');
   if ($answer_id != null) {
-  	$answer_id    = get_param('answer_id');
-  	$question_id  = get_wa_answer_field($answer_id, 'question_id');
+    $answer_id    = get_param('answer_id');
+    $question_id  = get_wa_answer_field($answer_id, 'question_id');
   } else {
-  	$answer_id    = -1;
-  	$question_id  = get_param('question_id');
+    $answer_id    = -1;
+    $question_id  = get_param('question_id');
   }
 
   $lowercase = true;
@@ -49,27 +49,27 @@ which belongs to the quiz <span class="qm_shadedText"><?php echo "'$quiz_title'"
 
   <div class="qmFormRow">
     <label>Answer Matching <span class="qmText">(specifies now strict the specified answer has to be in order for it to be considered correct)</span></label>
-	<div class="qmFormFieldBox">
+  <div class="qmFormFieldBox">
 
-	  <div>
-	    <input type="checkbox" name="form_lowercase"<?php echo checked($lowercase) ?> />
-	    <label class="qmFormAltText" for="form_lowercase">Disregard UPPER/lower case</label>
-	  </div>
+    <div>
+      <input type="checkbox" name="form_lowercase"<?php echo checked($lowercase) ?> />
+      <label class="qmFormAltText" for="form_lowercase">Disregard UPPER/lower case</label>
+    </div>
 
-	  <div>
-	    <input type="checkbox" name="form_nowhitespace"<?php echo checked($nowhitespace) ?> />
-	    <label class="qmFormAltText" for="form_nowhitespace">Disregard all whitespace</label>
-	  </div>
+    <div>
+      <input type="checkbox" name="form_nowhitespace"<?php echo checked($nowhitespace) ?> />
+      <label class="qmFormAltText" for="form_nowhitespace">Disregard all whitespace</label>
+    </div>
 
-	  <div>
+    <div>
         <input type="checkbox" name="form_noaccentuations"<?php echo checked($noaccentuations) ?> />
-	    <label class="qmFormAltText" for="form_noaccentuations">Disregard accentuations (á &hArr; a)</label>
-	  </div>
+      <label class="qmFormAltText" for="form_noaccentuations">Disregard accentuations (á &hArr; a)</label>
+    </div>
 
-	  <div>
-	    <input type="checkbox" name="form_onlyalphanumeric"<?php echo checked($onlyalphanumeric) ?> />
+    <div>
+      <input type="checkbox" name="form_onlyalphanumeric"<?php echo checked($onlyalphanumeric) ?> />
         <label class="qmFormAltText" for="form_onlyalphanumeric">Disregard non-alphanumerics</label>
-	  </div>
+    </div>
 
     </div>
   </div>

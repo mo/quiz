@@ -1,8 +1,8 @@
-<?php 
+<?php
 
-  $question_id      = get_param('question_id');  
+  $question_id      = get_param('question_id');
   $answer_id        = get_param('answer_id');
-  
+
   $question_type    = get_question_field($question_id, 'question_type');
   if ($question_type == 'qt_written_answer')
     $answer = get_wa_answer_field($answer_id, 'answer');
@@ -29,10 +29,10 @@
     <input type="submit" class="qmFormSubmit" name="btnSubmit" value="OK">
   </div>
 
-  <div class="qmFormRow">    
+  <div class="qmFormRow">
     <input type="submit" class="qmFormSubmit" name="btnSubmit" value="CANCEL">
   </div>
-  
+
 </div>
 
 

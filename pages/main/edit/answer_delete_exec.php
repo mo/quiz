@@ -1,8 +1,8 @@
 <?php
 
 $btnSubmit    = get_param('btnSubmit');
-$answer_id    = get_param('answer_id'); 
-$question_id  = get_param('question_id'); 
+$answer_id    = get_param('answer_id');
+$question_id  = get_param('question_id');
 
 $question_type    = get_question_field($question_id, 'question_type');
 
@@ -15,7 +15,7 @@ if ($btnSubmit == 'OK') {
     exec_query("DELETE FROM qmtbl_mc_answers WHERE answer_id=$answer_id");
   else serve_inconsistancy();
 
-} 
+}
 
 header("Location: ?action=edit/question_edit&question_id=$question_id");
 

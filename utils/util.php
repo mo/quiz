@@ -29,7 +29,7 @@ define("ENDL", "\n");
 function PrintMarkupWithVariables($markup, $variables) {
   foreach ($variables as $variable => $value)
     $markup = str_replace($variable, $value, $markup);
-  echo $markup;	
+  echo $markup;
 }
 
 function checked($isChecked) {
@@ -37,7 +37,7 @@ function checked($isChecked) {
     //return ' checked="checked"';
     return ' CHECKED';
   else
-    return ''; 
+    return '';
 }
 
 function fetch_uploaded_image($image_name) {
@@ -48,7 +48,7 @@ function fetch_uploaded_image($image_name) {
       strpos($_FILES[$image_name]['type'], "image/") !== false &&
       is_uploaded_file($_FILES[$image_name]['tmp_name']) &&
       $_FILES[$image_name]['error'] == UPLOAD_ERR_OK) {
-  
+
     #IS THE FILE LARGER THAN 16MB? --> NOT ALLOWED, SERVE ERROR
     if ($_FILES[$image_name]['size'] >= 16000000) {
       return NULL;
@@ -56,10 +56,10 @@ function fetch_uploaded_image($image_name) {
 
     $userimage_file = fopen($_FILES[$image_name]['tmp_name'], "r");
     $userimage_data = fread($userimage_file, filesize($_FILES[$image_name]['tmp_name']));
-    return array('image_mime' => $_FILES[$image_name]['type'], 
+    return array('image_mime' => $_FILES[$image_name]['type'],
                  'image_data' => $userimage_data,
                  'image_size' => $_FILES[$image_name]['size']);
-  
+
   } else {
     return NULL;
   }

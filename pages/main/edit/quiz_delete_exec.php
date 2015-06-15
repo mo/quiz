@@ -16,7 +16,7 @@ if ($btnSubmit == 'OK') {
   # DELETE THE QUIZ ITSELF
   exec_query("DELETE FROM qmtbl_quizzes WHERE quiz_id=$quiz_id");
 
-} 
+}
 
 header('Location: ?action=edit/quizzes_edit');
 

@@ -21,7 +21,7 @@
   $image_id = get_question_field($question_id, 'image_id');
   $result = exec_query("SELECT image_data, image_mime FROM qmtbl_images WHERE image_id='$image_id'");
   if (mysql_num_rows($result) == 0)
-    serve_error("No question image found.", 
+    serve_error("No question image found.",
                 "There was no image attached to the question with this particular question id.");
   $row = mysql_fetch_assoc($result);
 

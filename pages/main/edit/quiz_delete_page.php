@@ -1,4 +1,4 @@
-<?php 
+<?php
 
   $quiz_id = get_param('quiz_id');
   $quiz_title = get_quiz_field($quiz_id, 'title');
@@ -6,7 +6,7 @@
 ?>
 
 <form method="post" action="?action=edit/quiz_delete_exec">
-  
+
   <input type="hidden" name="quiz_id" value="<?php echo $quiz_id; ?>">
 
   <p class="qm_bad">
@@ -26,7 +26,7 @@
   <div class="qmFormRow">
     <input type="submit" class="qmFormSubmit" name="btnSubmit" value="OK" />
   </div>
-  
+
   <div class="qmFormRow">
     <input type="submit" class="qmFormSubmit" name="btnSubmit" value="CANCEL" />
   </div>

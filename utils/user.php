@@ -19,7 +19,7 @@ function canonical_username($username) {
 function get_client_username() {
   if (!isset($_COOKIE[QM_COOKIE_NAME__USERNAME]))
     return "";
-  
+
   return $_COOKIE[QM_COOKIE_NAME__USERNAME];
 }
 
@@ -29,7 +29,7 @@ function get_client_password() {
   if (!isset($_COOKIE[QM_COOKIE_NAME__PASSWORD])) {
     return "";
   }
-  
+
   return $_COOKIE[QM_COOKIE_NAME__USERNAME];
 }
 
@@ -48,7 +48,7 @@ function get_user_id_for_username($username) {
   if (mysql_num_rows($result) != 1)
     return -1;
 
-  # RETRIEVE & RETURN RESULT 
+  # RETRIEVE & RETURN RESULT
   $row = mysql_fetch_assoc($result);
   return $row['user_id'];
 }
@@ -77,7 +77,7 @@ function has_valid_userpass() {
   $result = mysql_query("SELECT * FROM qmtbl_users WHERE username='$username'");
   if (mysql_num_rows($result) != 1)
     return false;
-  
+
   # RETRIEVE & RETURN RESULT
   $row = mysql_fetch_assoc($result);
   return ($password == $row['password']);

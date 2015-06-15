@@ -16,12 +16,12 @@ define("QMTBL_QUESTIONS", "question_id INT NOT NULL AUTO_INCREMENT, quiz_id INT,
                    "comment TEXT, image_id INT, question_type ENUM('qt_written_answer', 'qt_multiple_choice'), " .
                    "PRIMARY KEY (question_id), FOREIGN KEY (quiz_id) REFERENCES qmtbl_quizzes (quiz_id), " .
                    "FOREIGN KEY (image_id) REFERENCES qmtbl_images (image_id)");
-define("QMTBL_WA_ANSWERS", "answer_id INT NOT NULL AUTO_INCREMENT, question_id INT, " . 
+define("QMTBL_WA_ANSWERS", "answer_id INT NOT NULL AUTO_INCREMENT, question_id INT, " .
                    "preMatchingTransform SET('lowercase', 'nowhitespace', 'noaccentuations', " .
                    "'onlyalphanumeric'), answer TEXT, " .
                    "PRIMARY KEY (answer_id), " .
                    "FOREIGN KEY (question_id) REFERENCES qmtbl_questions (question_id)");
-define("QMTBL_MC_ANSWERS", "answer_id INT NOT NULL AUTO_INCREMENT, question_id INT, " . 
+define("QMTBL_MC_ANSWERS", "answer_id INT NOT NULL AUTO_INCREMENT, question_id INT, " .
                    "answer TEXT, is_correct BOOL, " .
                    "PRIMARY KEY (answer_id), " .
                    "FOREIGN KEY (question_id) REFERENCES qmtbl_questions (question_id)");
@@ -58,7 +58,7 @@ function connectToDatabase() {
       case 1045:  # 1045 == ER_ACCESS_DENIED_ERROR
         serve_error('Database login incorrect (wrong user, pass or db)',
                     'QuizMaster could not login to the database server because the username, password and/or database that QuizMaster tried where invalid. ' .
-                    'Please check that the database account is properly setup and that QuizMaster has the right database login credentials configured ' . 
+                    'Please check that the database account is properly setup and that QuizMaster has the right database login credentials configured ' .
                     'in its settings file (typically located at <code>quizmaster/' . SETTINGS_FILE . '</code>).');
         break;
       default:
@@ -76,7 +76,7 @@ function createTablesIfNotExists() {
   exec_query('CREATE TABLE IF NOT EXISTS qmtbl_questions(' . QMTBL_QUESTIONS . ');');
   exec_query('CREATE TABLE IF NOT EXISTS qmtbl_wa_answers(' . QMTBL_WA_ANSWERS . ');');
   exec_query('CREATE TABLE IF NOT EXISTS qmtbl_mc_answers(' . QMTBL_MC_ANSWERS . ');');
-}   
+}
 
 function exec_query($query) {
   if (!($result = mysql_query($query))) serve_db_error($query);

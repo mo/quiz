@@ -5,10 +5,10 @@
     echo('<br><br><br><br><br><br><br><br>');
     die;
   }
-  
+
   # PREPROCESS INPUT
   $username = mysql_real_escape_string(canonical_username(get_client_username()));
-  
+
   # EXECUTE QUERY
   $result = exec_query("SELECT * FROM qmtbl_users WHERE username='$username'");
   $profile = mysql_fetch_assoc($result);
@@ -30,10 +30,10 @@
   <div class="qmFormFieldBox">
     <span class="qm_shadedText"><?php echo stripslashes($profile['realname']) ?></span
   </div>
-  
+
   <label>E-mail</label>
   <div class="qmFormFieldBox">
     <span class="qm_shadedText"><?php echo stripslashes($profile['email']) ?></span>
   </div>
-  
+
 
