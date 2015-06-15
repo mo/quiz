@@ -13,7 +13,7 @@
     echo "<h3>Your quizzes</h3>\n";
     echo "<ul>\n";
     $user_id = mysql_real_escape_string($user_id);
-    write_li_items_for_quizes("SELECT * FROM qmtbl_quizes WHERE owner_user_id='$user_id'", '(you have not created any quizzes yet, click the "Edit Quizzes" link)');
+    write_li_items_for_quizes("SELECT * FROM qmtbl_quizes WHERE owner_user_id='$user_id'", '(you have not created any quizzes yet, click the "Edit" menu item)');
     echo "</ul>\n";
     echo "<h3>Public quizzes shared by other users</h3>\n";
     echo "<ul>\n";
