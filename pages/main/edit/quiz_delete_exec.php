@@ -14,10 +14,10 @@ if ($btnSubmit == 'OK') {
   exec_query("DELETE FROM qmtbl_questions WHERE quiz_id=$quiz_id");
 
   # DELETE THE QUIZ ITSELF
-  exec_query("DELETE FROM qmtbl_quizes WHERE quiz_id=$quiz_id");
+  exec_query("DELETE FROM qmtbl_quizzes WHERE quiz_id=$quiz_id");
 
 } 
 
-header('Location: ?action=edit/quizes_edit');
+header('Location: ?action=edit/quizzes_edit');
 
 ?>

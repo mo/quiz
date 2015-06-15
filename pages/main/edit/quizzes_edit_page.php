@@ -3,7 +3,7 @@
 <ul>
 <?php  
   $user_id = get_user_id();
-  $result = exec_query("SELECT * FROM qmtbl_quizes WHERE owner_user_id=$user_id");
+  $result = exec_query("SELECT * FROM qmtbl_quizzes WHERE owner_user_id=$user_id");
   if (mysql_num_rows($result) == 0)
     echo '  <li><span class="qm_shadedText">(you have not created any quizzes yet)</span><br />';
   else {

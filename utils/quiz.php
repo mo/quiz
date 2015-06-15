@@ -4,7 +4,7 @@ function get_quiz_field($quiz_id, $field) {
   if (!isset($quiz_id)) return NULL;
   $quiz_id = mysql_real_escape_string($quiz_id);
   $field = mysql_real_escape_string($field);
-  $result = exec_query("SELECT " . $field . " FROM qmtbl_quizes WHERE quiz_id=$quiz_id");
+  $result = exec_query("SELECT " . $field . " FROM qmtbl_quizzes WHERE quiz_id=$quiz_id");
   if (mysql_num_rows($result) != 1)
     return NULL;
   $row = mysql_fetch_assoc($result);
@@ -69,11 +69,11 @@ function execPreMatchingTransform($transforms, $text) {
   return $text;
 }
 
-function write_li_items_for_quizes($sql_query_for_quizes, $placeholder_text_for_zero_quizes_found)
+function write_li_items_for_quizzes($sql_query_for_quizzes, $placeholder_text_for_zero_quizzes_found)
 {
-  $result = exec_query($sql_query_for_quizes);
+  $result = exec_query($sql_query_for_quizzes);
   if (mysql_num_rows($result) == 0)
-    echo '<li class="qm_odd"><span class="qm_shadedText">' . $placeholder_text_for_zero_quizes_found . '</span></li>';
+    echo '<li class="qm_odd"><span class="qm_shadedText">' . $placeholder_text_for_zero_quizzes_found . '</span></li>';
   else {
     $k = 0;
     while ($row = mysql_fetch_assoc($result)) {

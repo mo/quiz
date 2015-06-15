@@ -8,7 +8,7 @@
 <?php
 if (!is_guest()) {
   echo '  <td><a href="?action=take/take_quiz" class="qm_menu_item">Take Quiz</a></td>' . "\n";
-  echo '  <td><a href="?action=edit/quizes_edit&user_id=' . get_user_id() .
+  echo '  <td><a href="?action=edit/quizzes_edit&user_id=' . get_user_id() .
               '" class="qm_menu_item">Edit</a></td>' . "\n";
   echo '  <td><a href="?action=profile" class="qm_menu_item">Profile</a></td>' . "\n";
 }

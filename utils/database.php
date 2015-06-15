@@ -7,14 +7,14 @@
 define("QMTBL_USERS", "user_id INT NOT NULL AUTO_INCREMENT, username TEXT, password TEXT, " .
                "registration_date DATETIME, last_seen DATETIME, " .
                "image_mime TEXT, image_data MEDIUMBLOB, realname TEXT, email TEXT, PRIMARY KEY (user_id)");
-define("QMTBL_QUIZES", "quiz_id INT NOT NULL AUTO_INCREMENT, owner_user_id INT, public_quiz BOOL, " .
+define("QMTBL_QUIZZES", "quiz_id INT NOT NULL AUTO_INCREMENT, owner_user_id INT, public_quiz BOOL, " .
                 "title TEXT, creation_date DATETIME, last_finished DATETIME, times_finished INT, " .
                 "PRIMARY KEY (quiz_id), FOREIGN KEY (owner_user_id) REFERENCES qmtbl_users (user_id)");
 define("QMTBL_IMAGES", "image_id INT NOT NULL AUTO_INCREMENT, image_md5 TEXT, image_mime TEXT, image_data MEDIUMBLOB, " .
                 "PRIMARY KEY (image_id)");
 define("QMTBL_QUESTIONS", "question_id INT NOT NULL AUTO_INCREMENT, quiz_id INT, question TEXT, " .
                    "comment TEXT, image_id INT, question_type ENUM('qt_written_answer', 'qt_multiple_choice'), " .
-                   "PRIMARY KEY (question_id), FOREIGN KEY (quiz_id) REFERENCES qmtbl_quizes (quiz_id), " .
+                   "PRIMARY KEY (question_id), FOREIGN KEY (quiz_id) REFERENCES qmtbl_quizzes (quiz_id), " .
                    "FOREIGN KEY (image_id) REFERENCES qmtbl_images (image_id)");
 define("QMTBL_WA_ANSWERS", "answer_id INT NOT NULL AUTO_INCREMENT, question_id INT, " . 
                    "preMatchingTransform SET('lowercase', 'nowhitespace', 'noaccentuations', " .
@@ -41,8 +41,8 @@ function connectToDatabase() {
                 'order to get the MySQL bindings right, ie on systems with apt-get you should use "apt-get install php4-mysql" ' .
                 '(or possibly php5 etc). Note that any of these instructions might have changed, so check the documentation (or ask on IRC).');
   }
-  # Note; Prefixing the mysql_connect() function with a @-symbol prevents
-  # warnings/errors from beeing printed directly to the screen.
+  # NOTE: Prefixing the mysql_connect() function with a @-symbol prevents
+  # warnings/errors from being printed directly to the screen.
   if (!@mysql_connect(MYSQL_HOSTNAME, MYSQL_USERNAME, MYSQL_PASSWORD)) {
     switch (mysql_errno()) {
       case 0:     # 0    == no error occurred
@@ -71,7 +71,7 @@ function connectToDatabase() {
 
 function createTablesIfNotExists() {
   exec_query('CREATE TABLE IF NOT EXISTS qmtbl_users(' . QMTBL_USERS . ');');
-  exec_query('CREATE TABLE IF NOT EXISTS qmtbl_quizes(' . QMTBL_QUIZES . ');');
+  exec_query('CREATE TABLE IF NOT EXISTS qmtbl_quizzes(' . QMTBL_QUIZZES . ');');
   exec_query('CREATE TABLE IF NOT EXISTS qmtbl_images(' . QMTBL_IMAGES . ');');
   exec_query('CREATE TABLE IF NOT EXISTS qmtbl_questions(' . QMTBL_QUESTIONS . ');');
   exec_query('CREATE TABLE IF NOT EXISTS qmtbl_wa_answers(' . QMTBL_WA_ANSWERS . ');');

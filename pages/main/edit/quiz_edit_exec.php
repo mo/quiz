@@ -32,7 +32,7 @@ if ($quiz_id != NULL) {
 
   # PREPROCESS QUERY
   $quiz_id = mysql_real_escape_string($quiz_id);
-  $result = exec_query("SELECT owner_user_id FROM qmtbl_quizes WHERE quiz_id=$quiz_id");
+  $result = exec_query("SELECT owner_user_id FROM qmtbl_quizzes WHERE quiz_id=$quiz_id");
   if (mysql_num_rows($result) == 0) {
     serve_error('Invalid quiz identifier, no such quiz.', '');
   }
@@ -47,7 +47,7 @@ if ($quiz_id != NULL) {
 
   // Note: we already did mysql_real_escape_string($quiz_id);
   //       also $user_id doesn't need escaping because it comes from the DB
-  exec_query("UPDATE qmtbl_quizes SET public_quiz=$public_quiz, title='$form_quiz_title' " .
+  exec_query("UPDATE qmtbl_quizzes SET public_quiz=$public_quiz, title='$form_quiz_title' " .
              "WHERE quiz_id=$quiz_id AND owner_user_id=$user_id");
 
 } else {
@@ -57,7 +57,7 @@ if ($quiz_id != NULL) {
   ######################################################################
 
   # PREPROCESS QUERY
-  exec_query("INSERT INTO qmtbl_quizes(owner_user_id, public_quiz, title, creation_date, times_finished) " .
+  exec_query("INSERT INTO qmtbl_quizzes(owner_user_id, public_quiz, title, creation_date, times_finished) " .
              "VALUES ($user_id, $public_quiz, '$form_quiz_title', now(), 0)");
   # FORWARD USER TO THE "EDIT QUIZ CONTENTS" SCREEN
   $quiz_id = mysql_insert_id();
@@ -72,7 +72,7 @@ if ($quiz_id != NULL) {
 if ($btnSubmit == 'ADD NEW QUESTION') {
   header('Location: ?action=edit/question_edit&quiz_id=' . $quiz_id);
 } else if ($btnSubmit == 'SAVE AND CLOSE QUIZ') {
-  header("Location: ?action=edit/quizes_edit");
+  header("Location: ?action=edit/quizzes_edit");
 } else {
    // TODO: handle edit,up,down,delete buttons for all questions.
 
