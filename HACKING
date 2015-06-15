@@ -34,7 +34,7 @@ sudo cp -r ~/git-clone-of-quizmaster/* /var/www/quiz
 sudo chown -R $USER:www-data /var/www/quiz
 sudo chown g+w /var/www/quiz/prefs/settings.php
 
-sudo sh -c 'echo "<VirtualHost quiz:80>\n\tDocumentRoot "/var/www/quiz"\n</VirtualHost>" > /etc/apache2/sites-available/quiz.conf'
+sudo sh -c 'echo "<VirtualHost *:80>\n\tServerName quiz\n\tDocumentRoot "/var/www/quiz"\n</VirtualHost>" > /etc/apache2/sites-available/quiz.conf'
 sudo a2ensite quiz
 
 # add "127.0.0.1 quiz" to /etc/hosts
