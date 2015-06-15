@@ -7,15 +7,7 @@
 
 <p class="qmText"><?php echo $error_explanation ?></p>
 
-<p class="qmText">QuizMaster will automatically notify the quiz site administrator concerning this
-particular problem, so hopefully it will be fixed shortly. However, if it does persists,
-you can e-mail the administrator using this address 
+<p class="qmText">If necessary, you can contact the QuizMaster administrator at
 <a href="mailto:<?php echo $admin_email ?>"><?php echo $admin_email ?></a>.</p>
-
-<?php
-
-  //TODO: mail to admin here
-  
-?>
 
 
