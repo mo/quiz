@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="<?php
     echo THEMES_DIRECTORY . get_current_theme();
   ?>.css" type="text/css" media="screen">
+  <meta name="viewport" content="width=device-width, initial-scale=0.735">
 </head>
 <body>
 <div class="qmPage">
